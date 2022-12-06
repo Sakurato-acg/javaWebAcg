@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/container-fluid.css">
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <div class="head-logo">
+                <img src="imgs/mikan-pic.png" alt="">
+                <img src="imgs/mikan-text.png" alt="">
+            </div>
+            <span class="head-menu font">
+            </span>
+            <div class="search-pc">
+                <form action="" method="post">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="searchname" id="searchname" placeholder="Search...">
+                    <button type="submit" id="submit">搜索</button>
+                </form>
+            </div>
+            <div class="loginBtn">
+                <button>登录</button>
+            </div>
+
+        </div>
+        <div class="topnav">
+            <ul class="topnav-ul">
+                <li class="topnav-li">
+                    <a href="" class="a-active">
+                        <i class="fa fa-home"></i>
+                        <p>首页</p>
+                    </a>
+                </li>
+                <li class="topnav-li show-menu">
+                    <a href="" class="topnav-li-a">
+                        <i class="fa fa-th"></i>
+                        <p>分类</p>
+                        <i class="fa fa-angle-double-down" style="margin-left: 1.25rem;"></i>
+                    </a>
+                    <div class="dropdown">
+                        <div class="dropdown-menu">
+                            <p>哆啦A梦</p><i class="fa fa-angle-right "></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <p>番剧</p>
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="topnav-li">
+                    <a href="">
+                        <i class="fa fa-filter "></i>
+                        <p>番剧索引</p>
+                    </a>
+                </li>
+                <li class="topnav-li">
+                    <a href="">
+                        <i class="fa fa-file-text-o"></i>
+                        <p>页面</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="search-m">
+        <form action="" method="post">
+            <input type="text" name="searchname" id="searchname" placeholder="Search...">
+            <button type="submit" id="submit">搜索</button>
+        </form>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+
+        </div>
+    </div>
+    <script src="js/change.js"></script>
+    <script>
+        let menu = document.querySelector("header .head .head-menu");
+        let top_nav = document.querySelector("header .topnav");
+        let flag = false;
+        menu.addEventListener("click", function () {
+            if (!flag) {
+                top_nav.style.display = "block";
+                flag = !flag;
+            }
+            else {
+                top_nav.style.display = "none";
+                flag = !flag;
+            }
+        });
+
+    </script>
+</body>
+
+</html>
