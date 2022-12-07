@@ -72,7 +72,7 @@ header .head .search-pc form i {
   top: 1.4rem;
 }
 header .head .search-pc #searchname {
-  width: 60%;
+  width: 90%;
   margin: 0.75rem 0.3125rem;
   height: 2.5rem;
 
@@ -286,11 +286,17 @@ header .head .head-menu::after {
 .row :hover i {
   display: block;
 }
-.row div:hover {
+.row .row-index:hover {
   margin-top: -1.25rem;
 }
 .row > [class*="col-"] {
   padding: 0 1rem;
+}
+.col-12 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 @media screen and (min-width: 1920px) {
   .row > [class*="col-"] {
@@ -360,4 +366,30 @@ footer::before {
   footer .wrap .footer-row div:last-child {
     text-align: right;
   }
+}
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #6c757d;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.15rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #727cf5;
+  border-color: #727cf5;
+  box-shadow: 0 2px 6px 0 rgb(114 124 245 / 50);
 }
