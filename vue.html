@@ -6,37 +6,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/vue.css">
 </head>
 
 <body>
 
+    <div id="app">
+        <el-container>
+            <el-aside>
+                <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+                    :collapse="isCollapse">
+                    <el-submenu index="1">
+                        <template slot="title">
+                            <i class="el-icon-location"></i>
+                            <span slot="title">导航一</span>
+                        </template>
+                        <el-submenu index="1-1">
+                            <span slot="title">选项1</span>
+                        </el-submenu>
+                    </el-submenu>
+                    <el-menu-item index="2">
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">导航二</span>
+                    </el-menu-item>
+                    <el-menu-item index="3">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">导航三</span>
+                    </el-menu-item>
+                    <el-menu-item index="4">
+                        <i class="el-icon-setting"></i>
+                        <span slot="title">导航四</span>
+                    </el-menu-item>
+                </el-menu>
+            </el-aside>
+
+            <el-container>
+                <el-header>
+                    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+                        <el-radio-button :label="false">展开</el-radio-button>
+                        <el-radio-button :label="true">收起</el-radio-button>
+                    </el-radio-group>
+                </el-header>
+                <el-main>Main</el-main>
+                <el-footer>Footer</el-footer>
+            </el-container>
+        </el-container>
+    </div>
+
 
     <script src="js/vue.js"></script>
+    <script src="js/axios-0.18.0.js"></script>
+    <script src="js/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="js/element-ui/lib/theme-chalk/index.css">
+
     <script>
         //1. 创建Vue核心对象
         new Vue({
             el: "#app",
             data() {
+                const item = {
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+
+                }
                 return {
-                    two: [
-                        ["https://www.zmsub.top/archives/27/", "https://img30.360buyimg.com/imgzone/jfs/t1/177239/37/29121/301273/632f586cEa5348520/7a962a2ad4b59149.jpg", "链锯人"],
-                        ["https://www.zmsub.top/archives/3/", "https://img30.360buyimg.com/imgzone/jfs/t1/195942/29/30811/340069/638f36a9E58137080/e70ac8cdce475304.jpg", "哆啦A梦新番"],
-                        ["https://www.zmsub.top/archives/25/", "https://img30.360buyimg.com/imgzone/jfs/t1/171453/32/33031/108586/638f3446E69135744/a6a8ab6be0c533b0.jpg", "与猫共度的夜晚"],
-                        ["https://www.zmsub.top/archives/33/", "https://img30.360buyimg.com/imgzone/jfs/t1/92354/14/30913/312776/638df8b8E8b4333d7/7858dfd2f1b42e32.jpg", "哆啦A梦：大雄与空中乌托邦"],
-                        ["https://www.zmsub.top/archives/33/", "https://img30.360buyimg.com/imgzone/jfs/t1/92354/14/30913/312776/638df8b8E8b4333d7/7858dfd2f1b42e32.jpg", "哆啦A梦：大雄与空中乌托邦"],
-                        ["https://www.zmsub.top/archives/28/", "https://img30.360buyimg.com/imgzone/jfs/t1/206734/8/26364/285337/6341df3bE9ab1fdae/21b422d1f23e3102.png", "宇崎学妹想要玩 第二季"],
-                        ["https://www.zmsub.top/archives/27/", "https://img30.360buyimg.com/imgzone/jfs/t1/177239/37/29121/301273/632f586cEa5348520/7a962a2ad4b59149.jpg", "链锯人"],
-                        ["https://www.zmsub.top/archives/3/", "https://img30.360buyimg.com/imgzone/jfs/t1/195942/29/30811/340069/638f36a9E58137080/e70ac8cdce475304.jpg", "哆啦A梦新番"],
-                        ["https://www.zmsub.top/archives/25/", "https://img30.360buyimg.com/imgzone/jfs/t1/171453/32/33031/108586/638f3446E69135744/a6a8ab6be0c533b0.jpg", "与猫共度的夜晚"],
-                        ["https://www.zmsub.top/archives/33/", "https://img30.360buyimg.com/imgzone/jfs/t1/92354/14/30913/312776/638df8b8E8b4333d7/7858dfd2f1b42e32.jpg", "哆啦A梦：大雄与空中乌托邦"],
-                        ["https://www.zmsub.top/archives/33/", "https://img30.360buyimg.com/imgzone/jfs/t1/92354/14/30913/312776/638df8b8E8b4333d7/7858dfd2f1b42e32.jpg", "哆啦A梦：大雄与空中乌托邦"],
-                    ],
-                };
+                    tableData: Array(20).fill(item),
+                    isCollapse: true,
+                }
             },
+            methods: {
+                handleOpen(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                handleClose(key, keyPath) {
+                    console.log(key, keyPath);
+                }
+            }
         });
 
     </script>
-
 </body>
 
 </html>
