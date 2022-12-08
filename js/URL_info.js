@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
   add = add[add.length - 1];
   console.log(add);
 
-  if (new Date().getHours() > 18) {
-    add.children[0].style.display = "none";
-    add.children[2].style.display = "block";
-    console.log(add.children[2].style.display);
-  } else {
-    add.children[0].style.display = "block";
-    add.children[2].style.display = "none";
-  }
+  // if (new Date().getHours() > 18) {
+  //   add.children[0].style.display = "none";
+  //   add.children[2].style.display = "block";
+  //   console.log(add.children[2].style.display);
+  // } else {
+  //   add.children[0].style.display = "block";
+  //   add.children[2].style.display = "none";
+  // }
 
   var div = document.createElement("div");
   div.className = "col-4 col-s-3 col-m-2";

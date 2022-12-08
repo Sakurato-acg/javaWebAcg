@@ -3,6 +3,7 @@
   width: 100%;
   // background-color: antiquewhite;
   padding: 0 0.9375rem;
+  padding-bottom: 3.125rem;
 }
 @media (min-width: 992px) {
   .container-fluid {
@@ -13,6 +14,7 @@
   display: flex;
   flex-direction: column;
   // background-color: brown;
+  width: 100%;
 }
 .card {
   flex: 0 0 100%;
@@ -31,44 +33,83 @@
   }
 }
 
-.row > [class*="col-4"] {
+.row-etrieval > [class*="col-4"] {
+  position: relative;
   // background-color: red;
   // padding: ;
-  position: relative;
-  // box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
   // margin: 0 1.25rem;
   // padding: 0;
   a {
+    width: 100%;
+    position: relative;
+    color: #ffffff;
+    font-size: 2px;
     img {
       width: 100%;
+      height: 120px;
       background-size: 10% 10%;
-      object-fit: fill;
+      object-fit: cover;
       border-radius: 0%;
-      border-top-left-radius: 10%;
-      border-top-right-radius: 10%;
+      border-top-left-radius: 5%;
+      border-top-right-radius: 5%;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
     }
-  }
-  .over {
-    position: absolute;
-    width: 80%;
-    height: 20px;
-    background-color: red;
-    bottom: 40px;
-    a {
-      color: white;
-      font-size: 16px;
+    p {
+      position: absolute;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
       text-align: center;
+      bottom: 0;
+      padding: 0.3125rem;
+    }
+    .zhuangtai {
+      position: absolute;
+      top: 0;
+      right: 0.3125rem;
+      padding: 0 0.3125rem 0.3125rem;
+      background-color: #ff8100;
+      border-bottom-left-radius: 0.625rem;
+      border-bottom-right-radius: 0.625rem;
     }
   }
-  .zhuangtai {
-    position: absolute;
-    top: 0;
-    right: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .row-etrieval .col-m-2 {
+    flex: 0 0 16.6667% !important;
+    max-width: 16.6667% !important  ;
+  }
+  .rorow-etrievalw > [class*="col-4"] a img {
+    height: 150px;
   }
 }
 @media screen and (min-width: 900px) {
-  .row .col-1 {
-    flex: 0 0 8.333% !important;
-    max-width: 8.333% !important  ;
+  .row-etrieval .col-1 {
+    flex: 0 0 12.5% !important;
+    max-width: 12.5% !important  ;
+  }
+  .row-etrieval > [class*="col-4"] a img {
+    height: 190px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .row-etrieval > [class*="col-"] {
+    padding: 0 1.25rem;
+  }
+  .row-etrieval > [class*="col-4"] a img {
+    height: 500px;
+  }
+}
+.row:last-of-type {
+  margin-top: 40px;
+  .col-12 {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .btn {
+      background-color: #232a33;
+      color: #ffffff;
+    }
   }
 }

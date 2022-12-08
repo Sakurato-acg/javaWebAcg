@@ -25,13 +25,13 @@ for (let index = 0; index < alist.length; index++) {
     alist[0].style.color = "white";
   });
 }
-if (h > 18) {
-  b.style.backgroundImage = "url(imgs/background-night.png)";
-  head.style.backgroundColor = "#373737";
-} else {
-  b.style.backgroundImage = "url(imgs/background-light.png)";
-  head.style.backgroundColor = "#fff";
-}
+// if (h > 18) {
+//   b.style.backgroundImage = "url(imgs/background-night.png)";
+//   head.style.backgroundColor = "#373737";
+// } else {
+//   b.style.backgroundImage = "url(imgs/background-light.png)";
+//   head.style.backgroundColor = "#fff";
+// }
 
 function showtime() {
   var date = new Date();
@@ -64,3 +64,15 @@ function showtime() {
   setTimeout(showtime, 1000);
 }
 showtime();
+let menu = document.querySelector("header .head .head-menu");
+let top_nav = document.querySelector("header .topnav");
+let flag = false;
+menu.addEventListener("click", function () {
+  if (!flag) {
+    top_nav.style.display = "block";
+    flag = !flag;
+  } else {
+    top_nav.style.display = "none";
+    flag = !flag;
+  }
+});
