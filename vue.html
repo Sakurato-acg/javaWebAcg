@@ -6,86 +6,515 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/vue.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .el-table .warning-row {
+            background: oldlace;
+        }
+
+        .el-table .success-row {
+            background: #f0f9eb;
+        }
+    </style>
+
 </head>
 
+
 <body>
+<header>
+    <div class="head">
+        <div class="head-logo">
+            <img src="imgs/mikan-pic.png" alt="">
+            <img src="imgs/mikan-text.png" alt="">
+        </div>
+        <span class="head-menu font">
+            </span>
+        <div class="search-pc">
+            <form action="" method="post">
+                <i class="fa fa-search"></i>
+                <input type="text" name="searchname" class="searchname" placeholder="Search...">
+                <button type="submit" class="submit">搜索</button>
+            </form>
+        </div>
+        <div class="loginBtn">
+            <button>登录</button>
+        </div>
 
-    <div id="app">
-        <el-container>
-            <el-aside>
-                <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-                    :collapse="isCollapse">
-                    <el-submenu index="1">
-                        <template slot="title">
-                            <i class="el-icon-location"></i>
-                            <span slot="title">导航一</span>
-                        </template>
-                        <el-submenu index="1-1">
-                            <span slot="title">选项1</span>
-                        </el-submenu>
-                    </el-submenu>
-                    <el-menu-item index="2">
-                        <i class="el-icon-menu"></i>
-                        <span slot="title">导航二</span>
-                    </el-menu-item>
-                    <el-menu-item index="3">
-                        <i class="el-icon-document"></i>
-                        <span slot="title">导航三</span>
-                    </el-menu-item>
-                    <el-menu-item index="4">
-                        <i class="el-icon-setting"></i>
-                        <span slot="title">导航四</span>
-                    </el-menu-item>
-                </el-menu>
-            </el-aside>
-
-            <el-container>
-                <el-header>
-                    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-                        <el-radio-button :label="false">展开</el-radio-button>
-                        <el-radio-button :label="true">收起</el-radio-button>
-                    </el-radio-group>
-                </el-header>
-                <el-main>Main</el-main>
-                <el-footer>Footer</el-footer>
-            </el-container>
-        </el-container>
     </div>
+    <div class="topnav">
+        <ul class="topnav-ul">
+            <li class="topnav-li">
+                <a href="index.html" class="a-active">
+                    <i class="fa fa-home"></i>
+                    <p>首页</p>
+                </a>
+            </li>
+            <li class="topnav-li show-menu">
+                <a href="" class="topnav-li-a">
+                    <i class="fa fa-th"></i>
+                    <p>分类</p>
+                </a>
+                <i class="fa fa-angle-double-down"
+                   style="margin-left: 1.25rem;float: right;color: rgba(255, 255, 255, 0.5);"></i>
 
+                <div class="dropdown" style="display: none;background-color: #0e628e;">
+                    <div class="dropdown-menu">
+                        <p>哆啦A梦</p><i class="fa fa-angle-right "></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <p>番剧</p>
+                        <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </li>
+            <li class="topnav-li">
+                <a href="etrieval.html">
+                    <i class="fa fa-filter "></i>
+                    <p>番剧索引</p>
+                </a>
+            </li>
+            <li class="topnav-li">
+                <a href="vue.html">
+                    <i class="fa fa-file-text-o"></i>
+                    <p>管理</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
+<div class="search-m">
+    <form action="" method="post">
+        <input type="text" name="searchname" class="searchname" placeholder="Search...">
+        <button type="submit" class="submit">搜索</button>
+    </form>
+</div>
+<div id="app" style="height: 100%;">
+    <template>
+        <el-tabs type="border-card" style="height: 100%">
+            <el-tab-pane label="番剧管理">
+                <h3>番剧管理</h3>
+                <el-form :inline="true" :model="bangumi" class="demo-form-inline">
+                    <el-form-item label="名字">
+                        <el-input v-model="bangumi.name" placeholder="番剧名"></el-input>
+                    </el-form-item>
+                    <el-form-item label="类型">
+                        <el-select v-model="bangumi.type" placeholder="番剧类型">
+                            <el-option label="全部" value="0"></el-option>
+                            <el-option label="番剧" value="1"></el-option>
+                            <el-option label="剧场版" value="2"></el-option>
+                            <el-option label="ova" value="3"></el-option>
+                            <el-option label="长篇" value="4"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="时间">
+                        <el-select v-model="bangumi.time" placeholder="番剧时间">
+                            <el-option label="全部" value="0"></el-option>
+                            <el-option label="1月番" value="1"></el-option>
+                            <el-option label="4月番" value="4"></el-option>
+                            <el-option label="7月番" value="7"></el-option>
+                            <el-option label="10月番" value="10"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="状态">
+                        <el-select v-model="bangumi.status" placeholder="番剧状态">
+                            <el-option label="全部" value="0"></el-option>
+                            <el-option label="看完" value="1"></el-option>
+                            <el-option label="没看" value="2"></el-option>
+                            <el-option label="待定" value="3"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="年代">
+                        <el-select v-model="bangumi.year" placeholder="番剧年代">
+                            <el-option label="全部" value="0"></el-option>
+                            <el-option label="2022" value="2022"></el-option>
+                            <el-option label="2021" value="2021"></el-option>
+                            <el-option label="2020" value="2020"></el-option>
+                            <el-option label="2019" value="2019"></el-option>
+                            <el-option label="2018" value="2018"></el-option>
+                            <el-option label="2017" value="2017"></el-option>
+                            <el-option label="2016" value="2016"></el-option>
+                            <el-option label="2015" value="2015"></el-option>
+                            <el-option label="2014" value="2014"></el-option>
+                            <el-option label="2013" value="2013"></el-option>
+                            <el-option label="2012" value="2012"></el-option>
+                            <el-option label="2011" value="2011"></el-option>
+                            <el-option label="2010" value="2010"></el-option>
+                            <el-option label="2009" value="2009"></el-option>
+                            <el-option label="2008" value="2008"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="onSubmit">查询</el-button>
+                    </el-form-item>
+                </el-form>
+                <!--按钮-->
+                <el-row>
+                    <el-button type="danger" plain @click="deleteByIds">批量删除</el-button>
+                    <el-button type="primary" plain @click="dialogVisible = true">新增</el-button>
+                </el-row>
+                <!--添加数据对话框表单-->
+                <el-dialog
+                        title="编辑品牌"
+                        :visible.sync="dialogVisible"
+                        width="50%"
+                        center
+                >
+                    <el-form ref="form" :model="bangumi" label-width="70px" center>
 
-    <script src="js/vue.js"></script>
-    <script src="js/axios-0.18.0.js"></script>
-    <script src="js/element-ui/lib/index.js"></script>
-    <link rel="stylesheet" href="js/element-ui/lib/theme-chalk/index.css">
+                        <el-form-item label="番剧类型">
+                            <el-select v-model="bangumi.type" placeholder="番剧类型">
+                                <el-option label="全部" value="0"></el-option>
+                                <el-option label="番剧" value="1"></el-option>
+                                <el-option label="剧场版" value="2"></el-option>
+                                <el-option label="ova" value="3"></el-option>
+                                <el-option label="长篇" value="4"></el-option>
+                            </el-select>
+                        </el-form-item>
 
-    <script>
-        //1. 创建Vue核心对象
-        new Vue({
-            el: "#app",
-            data() {
-                const item = {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
+                        <el-form-item label="番剧时间">
+                            <el-select v-model="bangumi.time" placeholder="番剧时间">
+                                <el-option label="全部" value="0"></el-option>
+                                <el-option label="1月番" value="1"></el-option>
+                                <el-option label="4月番" value="4"></el-option>
+                                <el-option label="7月番" value="7"></el-option>
+                                <el-option label="10月番" value="10"></el-option>
+                            </el-select>
+                        </el-form-item>
 
-                }
-                return {
-                    tableData: Array(20).fill(item),
-                    isCollapse: true,
-                }
-            },
-            methods: {
-                handleOpen(key, keyPath) {
-                    console.log(key, keyPath);
+                        <el-form-item label="番剧状态">
+                            <el-select v-model="bangumi.status" placeholder="番剧状态">
+                                <el-option label="全部" value="0"></el-option>
+                                <el-option label="看完" value="1"></el-option>
+                                <el-option label="没看" value="2"></el-option>
+                                <el-option label="待定" value="3"></el-option>
+                            </el-select>
+                        </el-form-item>
+
+                        <el-form-item label="番剧年代">
+                            <el-select v-model="bangumi.year" placeholder="番剧年代">
+                                <el-option label="全部" value="0"></el-option>
+                                <el-option label="2022" value="2022"></el-option>
+                                <el-option label="2021" value="2021"></el-option>
+                                <el-option label="2020" value="2020"></el-option>
+                                <el-option label="2019" value="2019"></el-option>
+                                <el-option label="2018" value="2018"></el-option>
+                                <el-option label="2017" value="2017"></el-option>
+                                <el-option label="2016" value="2016"></el-option>
+                                <el-option label="2015" value="2015"></el-option>
+                                <el-option label="2014" value="2014"></el-option>
+                                <el-option label="2013" value="2013"></el-option>
+                                <el-option label="2012" value="2012"></el-option>
+                                <el-option label="2011" value="2011"></el-option>
+                                <el-option label="2010" value="2010"></el-option>
+                                <el-option label="2009" value="2009"></el-option>
+                                <el-option label="2008" value="2008"></el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item label="番剧名字">
+                            <el-input v-model="bangumi.name"></el-input>
+                        </el-form-item>
+                        <el-form-item label="番剧封面">
+                            <el-input v-model="bangumi.picture"></el-input>
+                        </el-form-item>
+
+                        <el-form-item style="float: right">
+                            <el-button @click="dialogVisible = false">取消</el-button>
+                            <el-button type="primary" @click="updateBangumi()">提交</el-button>
+                        </el-form-item>
+                    </el-form>
+
+                </el-dialog>
+                <!-- 表格-->
+                <template>
+                    <el-table
+                            :data="tableData"
+                            style="width: 100%"
+                            :row-class-name="tableRowClassName"
+                            @selection-change="handleSelectionChange"
+                    >
+                        <el-table-column
+                                type="selection"
+                                width="55">
+                        </el-table-column>
+                        <el-table-column
+                                type="index"
+                                :index="indexMethod"
+                                label="序号"
+                                width="50"
+                        >
+                        </el-table-column>
+                        <el-table-column
+                                prop="name"
+                                label="名字"
+                        >
+                        </el-table-column>
+                        <el-table-column
+                                prop="type"
+                                label="类型"
+                        >
+                        </el-table-column>
+                        <el-table-column
+                                prop="time"
+                                label="时间"
+                        >
+                        </el-table-column>
+                        <el-table-column
+                                prop="status"
+                                label="状态"
+                        >
+                        </el-table-column>
+                        <el-table-column
+                                prop="year"
+                                label="年代"
+                        >
+                        </el-table-column>
+                        <el-table-column
+                                prop="picture"
+                                label="封面"
+                        >
+                        </el-table-column>
+                    </el-table>
+                </template>
+                <!--分页工具条-->
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-sizes="[5, 10, 15, 20]"
+                        :page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="total">
+                </el-pagination>
+            </el-tab-pane>
+            <el-tab-pane label="配置管理">配置管理</el-tab-pane>
+            <el-tab-pane label="角色管理">角色管理</el-tab-pane>
+            <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
+        </el-tabs>
+    </template>
+</div>
+<script src="js/other.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/element-ui/lib/index.js"></script>
+<link rel="stylesheet" href="js/element-ui/lib/theme-chalk/index.css">
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                dialogVisible: false,
+                //总页数
+                total: 40,
+                // 当前每页数据条数
+                pageSize: 5,
+                // 当前页码
+                currentPage: 1,
+                bangumi: {
+                    id: undefined,
+                    name: '',
+                    type: null,
+                    time: null,
+                    status: null,
+                    year: null,
+                    picture: '',
+                    userIds: ''
                 },
-                handleClose(key, keyPath) {
-                    console.log(key, keyPath);
+                tableData: [
+                    {
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
                 }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }
+                ,{
+                    name: "86 -不存在的战区-",
+                    type: 1,
+                    time: 1,
+                    status: 1,
+                    year: 1,
+                    picture: "https://img.moegirl.org.cn/common/a/af/86_Vol1.jpg"
+                }]
             }
-        });
+        },
+        methods: {
+            onSubmit() {
+                console.log('submit');
+            },
+            updateBangumi() {
 
-    </script>
+            },
+            deleteByIds() {
+
+            },
+            tableRowClassName({row, rowIndex}) {
+                if ((rowIndex - 1) % 4 === 0) {
+                    return 'warning-row';
+                } else if ((rowIndex + 1) % 4 === 0) {
+                    return 'success-row';
+                }
+                return '';
+            },
+            // 复选框选中后执行的方法
+            handleSelectionChange(val) {
+                // this.multipleSelection = val;
+                // for (let i = 0; i < this.multipleSelection.length; i++) {
+                //     let selectionElement = this.multipleSelection[i];
+                //     this.selectedIds[i] = selectionElement.id;
+                // }
+            },
+            // indexMethod(index) {
+            //     // return index += (this.currentPage - 1) * this.pageSize + 1;
+            // },
+            //分页
+            handleSizeChange(val) {
+                console.log('分页');
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+
+            }
+        }
+    })
+
+</script>
 </body>
 
 </html>

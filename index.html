@@ -26,8 +26,8 @@
             <div class="search-pc">
                 <form action="" method="post">
                     <i class="fa fa-search"></i>
-                    <input type="text" name="searchname" id="searchname" placeholder="Search...">
-                    <button type="submit" id="submit">搜索</button>
+                    <input type="text" name="searchname" class="searchname" placeholder="Search...">
+                    <button type="submit" class="submit">搜索</button>
                 </form>
             </div>
             <div class="loginBtn">
@@ -38,7 +38,7 @@
         <div class="topnav">
             <ul class="topnav-ul">
                 <li class="topnav-li">
-                    <a href="" class="a-active">
+                    <a href="index.html" class="a-active">
                         <i class="fa fa-home"></i>
                         <p>首页</p>
                     </a>
@@ -47,9 +47,11 @@
                     <a href="" class="topnav-li-a">
                         <i class="fa fa-th"></i>
                         <p>分类</p>
-                        <i class="fa fa-angle-double-down" style="margin-left: 1.25rem;"></i>
                     </a>
-                    <div class="dropdown">
+                    <i class="fa fa-angle-double-down"
+                        style="margin-left: 1.25rem;float: right;color: rgba(255, 255, 255, 0.5);"></i>
+
+                    <div class="dropdown" style="display: none;background-color: #0e628e;">
                         <div class="dropdown-menu">
                             <p>哆啦A梦</p><i class="fa fa-angle-right "></i>
                         </div>
@@ -76,8 +78,8 @@
     </header>
     <div class="search-m">
         <form action="" method="post">
-            <input type="text" name="searchname" id="searchname" placeholder="Search...">
-            <button type="submit" id="submit">搜索</button>
+            <input type="text" name="searchname" class="searchname" placeholder="Search...">
+            <button type="submit" class="submit">搜索</button>
         </form>
     </div>
     <main class="index">
@@ -103,7 +105,7 @@
                 <div class="col-4 col-s-3 col-m-2">
                     <a href="https://zh.moegirl.org.cn/GANGAN_GA%E9%A2%91%E9%81%93#%E8%8A%82%E7%9B%AE%E8%A1%A8"
                         data-paul-state="">
-                        <img src="upload/mnbk.png" style="size :50% 50%">
+                        <img src="upload/mnbk.png">
                         <h4>萌娘百科</h4>
                     </a>
                     <i class="fa fa-times"></i>
@@ -119,7 +121,7 @@
                 <!-- NO.4 -->
                 <div class="col-4 col-s-3 col-m-2">
                     <a href="https://lzacg.one/4378" data-paul-state="">
-                        <img src="upload/量子ACG.png" style="background: size 90px 90px;">
+                        <img src="upload/量子ACG.png">
                         <h4>量子ACG</h4>
                     </a>
                     <i class="fa fa-times"></i>
@@ -205,12 +207,12 @@
             <div class="addInfo-input-content">
                 <div class="name-input">
                     <label>网址</label>
-                    <input type="text" name="info[username]" id="username" />
+                    <input type="text" name="info[username]" />
                     <!-- <div id="underline"></div> -->
                 </div>
                 <div class="URL-input">
                     <label>名称</label>
-                    <input type="text" name="info[username]" id="username" />
+                    <input type="text" name="info[username]" />
                     <!-- <div id="underline"></div> -->
                 </div>
             </div>

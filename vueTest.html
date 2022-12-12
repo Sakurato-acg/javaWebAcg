@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/vue.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <el-container>
+            <el-aside>
+                <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+                    :collapse="isCollapse">
+                    <el-submenu index="1">
+                        <template slot="title">
+                            <i class="el-icon-location"></i>
+                            <span slot="title">导航一</span>
+                        </template>
+                        <el-submenu index="1-1">
+                            <span slot="title">选项1</span>
+                        </el-submenu>
+                    </el-submenu>
+                    <el-menu-item index="2">
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">导航二</span>
+                    </el-menu-item>
+                    <el-menu-item index="3">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">番剧管理</span>
+                        <template>
+                            <el-tabs tab-position="left" style="height: 200px;">
+                                <el-tab-pane label="用户管理">用户管理</el-tab-pane>
+                                <el-tab-pane label="配置管理">配置管理</el-tab-pane>
+                                <el-tab-pane label="角色管理">角色管理</el-tab-pane>
+                                <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
+                            </el-tabs>
+                        </template>
+                    </el-menu-item>
+                    <el-menu-item index="4">
+                        <i class="el-icon-setting"></i>
+                        <span slot="title">用户管理</span>
+                    </el-menu-item>
+                </el-menu>
+            </el-aside>
+
+            <el-container>
+                <el-header style="text-align: left;">
+                    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+                        <el-radio-button :label="false">展开</el-radio-button>
+                        <el-radio-button :label="true">收起</el-radio-button>
+                    </el-radio-group>
+                </el-header>
+                <el-main>Main</el-main>
+                <el-footer>Footer</el-footer>
+            </el-container>
+        </el-container>
+    </div>
+
+
+    <script src="js/vue.js"></script>
+    <script src="js/axios-0.18.0.js"></script>
+    <script src="js/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="js/element-ui/lib/theme-chalk/index.css">
+
+    <script>
+        //1. 创建Vue核心对象
+        new Vue({
+            el: "#app",
+            data() {
+                const item = {
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+
+                }
+                return {
+                    tableData: Array(20).fill(item),
+                    isCollapse: true,
+                }
+            },
+            methods: {
+                handleOpen(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                handleClose(key, keyPath) {
+                    console.log(key, keyPath);
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
