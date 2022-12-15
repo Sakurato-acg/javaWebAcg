@@ -201,10 +201,10 @@
             </div>
         </div>
         <div class="row  row-etrieval" id="app" style="margin-top: 2rem;">
-            <div class="col-4 col-s-3 col-m-2" v-for="(item,index) in data">
+            <div class="col-4 col-s-3 col-m-2" v-for="(item,index) in two">
                 <a href="#" class="clear">
-                    <img :src="item.picture" alt="">
-                    <p class="title">{{item.name}}</p>
+                    <img :src="item[1]" alt="">
+                    <p class="title">{{item[2]}}</p>
                     <div class="zhuangtai">连载</div>
                 </a>
             </div>
