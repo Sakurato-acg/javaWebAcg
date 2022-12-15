@@ -37,6 +37,7 @@
   width: 100%;
   position: relative;
   color: #ffffff;
+  display:flex;
 }
 .row-etrieval > [class*="col"] a img {
   width: 100%;
